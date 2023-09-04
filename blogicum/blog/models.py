@@ -8,8 +8,7 @@ User = get_user_model()
 class BaseModel(models.Model):
     is_published = models.BooleanField(
         default=True, verbose_name='Опубликовано',
-        help_text='Снимите галочку, чтобы скрыть публикацию.'
-        )
+        help_text='Снимите галочку, чтобы скрыть публикацию.')
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Добавлено')
 
@@ -49,8 +48,7 @@ class Category(BaseModel):
         unique=True, verbose_name='Идентификатор',
         help_text=(
             'Идентификатор страницы для URL; '
-            'разрешены символы латиницы, цифры, дефис и подчёркивание.'
-            ))
+            'разрешены символы латиницы, цифры, дефис и подчёркивание.'))
 
     class Meta:
         verbose_name = 'категория'
@@ -63,8 +61,7 @@ class Category(BaseModel):
 class Location(BaseModel):
     name = models.CharField(
         max_length=256, verbose_name='Название места',
-        help_text='Уникальное название обёртки, не более 256 символов'
-        )
+        help_text='Уникальное название обёртки, не более 256 символов')
 
     class Meta:
         verbose_name = 'местоположение'
