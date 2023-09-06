@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
+from blog.models import Post, Category
 
-from blog.models import Post
-from blog.models import Category
+
+POST_LIST_LIMIT = 5
 
 
 def index(request):
@@ -12,19 +13,19 @@ def index(request):
         pub_date__lte=timezone.now(),
         is_published=True,
         category__is_published=True,
-    )[:5]
+    )[:POST_LIST_LIMIT]
     context = {'post_list': post_list}
     return render(request, template, context)
 
 
-def post_detail(request, id):
+def post_detail(request, pk):
     template = 'blog/detail.html'
     post = get_object_or_404(
         Post,
         category__is_published=True,
         is_published=True,
         pub_date__lte=timezone.now(),
-        id=id)
+        pk=pk)
     context = {'post': post}
     return render(request, template, context)
 

@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
+POST_LIST_LIMIT = 5
+
 User = get_user_model()
 
 
